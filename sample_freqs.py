@@ -1,7 +1,6 @@
 from random import randint
-text = 'one fish two fish red fish blue fish'
-histogram = {'one': 1, 'fish': 4, 'two': 1,
-               'red': 1, 'blue': 1}
+# text = 'one fish two fish red fish blue fish'
+# histogram = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
 
 def sample(histogram):
   count_sum = 0
@@ -20,9 +19,3 @@ def sample(histogram):
       return word
     else:
       start = end
-
-
-i=0     
-while i < 1000:
-  print(sample(histogram))
-  i+=1
