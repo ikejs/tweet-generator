@@ -44,8 +44,8 @@ class Dictogram:
         fence = 0 
         for word, count in self.dictionary_histogram.items():
             fence += count 
-        if fence >= dart: 
-            return word
+            if fence >= dart: 
+                return word
         
 
 def print_dictogram(word_list):
@@ -101,6 +101,5 @@ def print_dictogram_samples(dictogram):
     print(divider)
     print()
 
-#print_dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
-dictogram = Dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
-print(dictogram.dictionary_histogram)
+print_dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
+# print(print_dictogram_samples(dictogram))
