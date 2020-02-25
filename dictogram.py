@@ -12,27 +12,41 @@ class Dictogram:
         self.tokens = sum(self.dictionary_histogram.values())
         self.types = self.unique_words()
 
-    def build_dictogram(self): 
+    def build_dictogram(self):
         '''Creates a histogram dictionary using the word_list property and returns it'''
-
-        #TODO: use your histogram function as a starting point to complete this method
-        pass
+        words = self.word_list
+        histogram = {}
+        for word in words:
+            if word in histogram.keys():
+                histogram[word] += 1
+            else:
+                histogram[word] = 1
+        return histogram
 
     def frequency(self, word):
         '''returns the frequency or count of the given word in the dictionary histogram'''
-        #TODO: use your frequency function as a starting point to complete this method
-        pass
+        return self.dictionary_histogram[word]
+        
 
     def unique_words(self):
         '''returns the number of unique words in the dictionary histogram'''
-        #TODO: use your unique words function as a starting point to complete this method
-        pass
+        '''unique_words = []
+        for word in self.dictionary_histogram:
+            if self.dictionary_histogram[word] == 1:
+                unique_words.append(word)
+        return len(unique_words)'''
+        return len(self.dictionary_histogram.keys())
 
     def sample(self):
         '''Randomly samples from the dictionary histogram based on the frequency, returns a word'''
-
-        #TODO: use your sample function as a starting point to complete this method 
-        pass
+        tokens = sum([count for word, count in self.dictionary_histogram.items()]) 
+        dart = randint(1, tokens) 
+        fence = 0 
+        for word, count in self.dictionary_histogram.items():
+            fence += count 
+        if fence >= dart: 
+            return word
+        
 
 def print_dictogram(word_list):
     '''Creates a dictionary based histogram (dictogram) and then prints out its properties and samples from it'''
@@ -87,4 +101,6 @@ def print_dictogram_samples(dictogram):
     print(divider)
     print()
 
-print_dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
+#print_dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
+dictogram = Dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
+print(dictogram.dictionary_histogram)
