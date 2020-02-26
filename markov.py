@@ -35,7 +35,6 @@ class MarkovChain:
         return markov_chain
 
     def walk(self, num_words):
-        #TODO: generate a sentence num_words long using the markov chain
         sentence = []
 
         word = list(self.markov_chain.keys())[randrange(len(self.markov_chain))]
@@ -54,6 +53,7 @@ class MarkovChain:
 
 
 
-markov_chain = MarkovChain(["one", "fish", "two", "fish", "red", "fish", "blue", "fish"])
-markov_chain.print_chain()
-print(markov_chain.walk(10))
+
+# markov_chain = MarkovChain(["one", "fish", "two", "fish", "red", "fish", "blue", "fish"])
+# markov_chain.print_chain()
+# print(markov_chain.walk(10))
