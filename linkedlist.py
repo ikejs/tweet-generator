@@ -67,7 +67,7 @@ class LinkedList(object):
             return
         else:
             self.tail.next = node
-            self.tail = node # O(c) - no repeating iteration
+            self.tail = node # O(n) - no repeating iteration
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
@@ -79,7 +79,7 @@ class LinkedList(object):
             return
         else:
             node.next = self.head
-            self.head = node # O(c) - no repeating iteration
+            self.head = node # O(n) - no repeating iteration
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
@@ -90,30 +90,35 @@ class LinkedList(object):
             if quality(node.data) == True:
                 return node.data
             node = node.next
-        return None # best case: O(c) - finding it in the first iteration | worst case: O(n) finding at the tail
+        return None # best case: O(n) - finding it in the first iteration | worst case: O(n) finding at the tail
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
-
-        node = self.head
-        lastNode = None
-        while node:
-            if node.data == item: # if current node has the item
-                if self.head == self.tail: # if deleting a node that's not head or tail
-                    self.head = None
-                    self.tail = None
-                elif lastNode == None: # if deleting the head
-                    self.head = node.next
-                elif node.next is None: # if deleting the tail
-                    lastNode.next = None
-                    self.tail = lastNode
-                else:
-                    lastNode.next = node.next
-            lastNode = node
-            node = node.next
+        if self.is_empty():
             raise ValueError('Item not found: {}'.format(item))
+
+        current = self.head
+        previous = None
+
+        if current.data == item:
+            self.head = current.next
+            if current.next == None:
+                self.tail = None
+            return
+
+        while current is not None:
+            if current.data == item:
+                if current.next == None:
+                    self.tail = previous
+                previous.next = current.next
+                return
+            else:
+                previous = current
+                current = current.next
+
+        raise ValueError('Item not found: {}'.format(item))
     
 
 
