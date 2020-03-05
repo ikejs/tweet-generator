@@ -59,7 +59,7 @@ class HashTable(object):
         for bucket in self.buckets:
             for item in bucket.items():
                 itemsCount += 1
-            return itemsCount # O(n) because it's a nested for loop
+        return itemsCount # O(n) because it's a nested for loop
 
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
@@ -96,7 +96,7 @@ class HashTable(object):
             lastValue = bucket.find(quality)[1]
             bucket.delete((key, lastValue))
         bucket = self.buckets[i]
-        bucket.append((key, value)) # O(c) no loops...
+        bucket.append((key, value)) # O(n) no loops...
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
